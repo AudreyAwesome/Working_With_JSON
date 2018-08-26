@@ -20,18 +20,20 @@ function loadWeather() {
     // weatherConditions.open('GET', conditionsPath, true);
     weatherConditions.open('GET', 'mock_san_francisco_conditions.json', true);
     weatherConditions.responseType = 'text';
+    weatherConditions.onload = loadWeatherConditions;
     weatherConditions.send();
 
     // GET THE FORECARST
     // weatherForecast.open('GET', forecastPath, true);
     weatherForecast.open('GET', 'mock_san_francisco_forecast.json', true);
     weatherForecast.responseType = 'text';
+    weatherForecast.onload = loadWeatherForecast;
     weatherForecast.send();
 }
 
 
 
-weatherConditions.onload = function () {
+  function loadWeatherConditions() {
     if (weatherConditions.status === 200) {
         cObj = JSON.parse(weatherConditions.responseText);
         console.log(cObj);
@@ -45,7 +47,7 @@ weatherConditions.onload = function () {
 
 
 
-weatherForecast.onload = function () {
+  function loadWeatherForecast() {
     if (weatherForecast.status === 200) {
         fObj = JSON.parse(weatherForecast.responseText);
         console.log(fObj);

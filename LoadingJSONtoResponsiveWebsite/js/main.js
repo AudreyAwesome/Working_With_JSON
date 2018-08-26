@@ -4,8 +4,6 @@ var details;
 var xhr = new XMLHttpRequest();
 xhr.open('GET', "data.json", true);
 xhr.responseType = 'text';
-xhr.send();
-
 
 xhr.onload = function() {
     if(xhr.status === 200) {
@@ -14,6 +12,8 @@ xhr.onload = function() {
         display(0);  
     } // end if
 } // end function
+
+xhr.send();
 
 function display(x){
     console.log(x);
